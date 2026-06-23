@@ -66,6 +66,11 @@ const ModelDeployment = ({ modelResults }) => {
           })
         )
         setModels(modelsWithMetadata)
+        setSelectedModel(prev => {
+          if (!prev) return null
+          const updated = modelsWithMetadata.find(m => m.model_id === prev.model_id)
+          return updated || null
+        })
       } else {
         throw new Error(data.error || 'Backend returned success=false')
       }
@@ -89,6 +94,10 @@ const ModelDeployment = ({ modelResults }) => {
       })
       const data = await response.json()
       if (data.success) {
+        const deployedModel = models.find(m => m.model_id === modelId)
+        if (deployedModel) {
+          setSelectedModel({ ...deployedModel, deployed: true })
+        }
         fetchModels() // Refresh list
       } else {
         alert(data.error || 'Failed to deploy model')
@@ -106,6 +115,10 @@ const ModelDeployment = ({ modelResults }) => {
       })
       const data = await response.json()
       if (data.success) {
+        const undeployedModel = models.find(m => m.model_id === modelId)
+        if (undeployedModel) {
+          setSelectedModel({ ...undeployedModel, deployed: false })
+        }
         fetchModels() // Refresh list
       } else {
         alert(data.error || 'Failed to undeploy model')
