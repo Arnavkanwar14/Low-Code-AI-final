@@ -1,0 +1,15 @@
+venv/
+venv_new/
+.venv/
+backend/venv/
+backend/venv_new/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+build/
+uploads/
+*.csv
+*.log
+*.pkl
+projects.json

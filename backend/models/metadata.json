@@ -1,0 +1,184 @@
+{
+  "9f7ac01f-80dd-4436-92e1-a2198ea22b0c": {
+    "model_id": "9f7ac01f-80dd-4436-92e1-a2198ea22b0c",
+    "model_name": "logistic_regression_20260329_215243",
+    "version": "1.0.0",
+    "algorithm": "logistic_regression",
+    "task_type": "classification",
+    "target_column": "label",
+    "metrics": {
+      "accuracy": 0.9912436516474444,
+      "confusion_matrix": [
+        [
+          38761,
+          74
+        ],
+        [
+          276,
+          860
+        ]
+      ]
+    },
+    "feature_map": {
+      "numerical": [
+        "customer_id",
+        "merchant_id",
+        "hour",
+        "day",
+        "weekday",
+        "is_weekend",
+        "is_night",
+        "avg_spend_profile",
+        "home_lat",
+        "home_lon",
+        "past_fraud_history",
+        "credit_score",
+        "account_age_days",
+        "merchant_risk_score",
+        "merchant_lat",
+        "merchant_lon",
+        "transaction_amount",
+        "txn_lat",
+        "txn_lon",
+        "distance_from_home_km",
+        "is_foreign",
+        "high_risk_country",
+        "is_new_device",
+        "vpn_detected",
+        "tor_detected",
+        "transaction_velocity_1h",
+        "transaction_velocity_24h",
+        "transaction_velocity_7d",
+        "seconds_since_last_txn",
+        "avg_amount_30d",
+        "amount_deviation_ratio",
+        "merchant_ring_id",
+        "shared_device_count",
+        "customer_merchant_txn_count"
+      ],
+      "categorical": [
+        "customer_segment",
+        "merchant_category",
+        "device_type",
+        "channel"
+      ],
+      "text": [
+        "timestamp"
+      ]
+    },
+    "auto_config": {
+      "numerical": [
+        {
+          "op": "scale"
+        }
+      ],
+      "categorical": [
+        {
+          "op": "one_hot"
+        }
+      ],
+      "text": []
+    },
+    "leakage_columns": [
+      "device_id",
+      "financial_loss",
+      "fraud_type",
+      "transaction_id"
+    ],
+    "status": "trained",
+    "deployed": false,
+    "created_at": "2026-03-29T21:52:43.489896",
+    "updated_at": "2026-06-23T20:53:13.862738"
+  },
+  "52d03f97-a1d1-4c72-9803-f80029e2969c": {
+    "model_id": "52d03f97-a1d1-4c72-9803-f80029e2969c",
+    "model_name": "random_forest_20260623_205252",
+    "version": "1.0.0",
+    "algorithm": "random_forest",
+    "task_type": "classification",
+    "target_column": "label",
+    "metrics": {
+      "accuracy": 0.9972480048034825,
+      "confusion_matrix": [
+        [
+          38821,
+          14
+        ],
+        [
+          96,
+          1040
+        ]
+      ]
+    },
+    "feature_map": {
+      "numerical": [
+        "customer_id",
+        "merchant_id",
+        "hour",
+        "day",
+        "weekday",
+        "is_weekend",
+        "is_night",
+        "avg_spend_profile",
+        "home_lat",
+        "home_lon",
+        "past_fraud_history",
+        "credit_score",
+        "account_age_days",
+        "merchant_risk_score",
+        "merchant_lat",
+        "merchant_lon",
+        "transaction_amount",
+        "txn_lat",
+        "txn_lon",
+        "distance_from_home_km",
+        "is_foreign",
+        "high_risk_country",
+        "is_new_device",
+        "vpn_detected",
+        "tor_detected",
+        "transaction_velocity_1h",
+        "transaction_velocity_24h",
+        "transaction_velocity_7d",
+        "seconds_since_last_txn",
+        "avg_amount_30d",
+        "amount_deviation_ratio",
+        "merchant_ring_id",
+        "shared_device_count",
+        "customer_merchant_txn_count"
+      ],
+      "categorical": [
+        "customer_segment",
+        "merchant_category",
+        "device_type",
+        "channel"
+      ],
+      "text": [
+        "timestamp"
+      ]
+    },
+    "auto_config": {
+      "numerical": [
+        {
+          "op": "scale"
+        }
+      ],
+      "categorical": [
+        {
+          "op": "one_hot"
+        }
+      ],
+      "text": []
+    },
+    "leakage_columns": [
+      "device_id",
+      "financial_loss",
+      "fraud_type",
+      "transaction_id"
+    ],
+    "status": "trained",
+    "deployed": true,
+    "created_at": "2026-06-23T20:52:53.056160",
+    "updated_at": "2026-06-23T20:53:16.633745"
+  }
+}
