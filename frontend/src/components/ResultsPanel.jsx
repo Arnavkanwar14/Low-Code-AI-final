@@ -28,6 +28,8 @@ import {
 } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { Bar, Doughnut, Line, Radar } from 'react-chartjs-2'
+import { API_BASE_URL } from '../config'
+
 
 // Register ChartJS components
 ChartJS.register(
@@ -92,7 +94,7 @@ const ResultsPanel = ({ modelResults, isTraining }) => {
     if (!modelResults) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/export-code', {
+      const response = await fetch(`${API_BASE_URL}/api/export-code`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

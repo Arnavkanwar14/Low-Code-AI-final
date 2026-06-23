@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
+import { API_BASE_URL } from '../config'
 
 const Workspace = ({
   workspaceItems,
@@ -64,7 +65,7 @@ const Workspace = ({
           formData.append(key, trainingParams[key])
         })
         
-        const response = await fetch('http://localhost:5000/api/train', {
+        const response = await fetch(`${API_BASE_URL}/api/train`, {
         method: 'POST',
         body: formData,
       })

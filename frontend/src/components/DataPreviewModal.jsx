@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search, Download, Filter, FileText, Database, Layers } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const DataPreviewModal = ({ dataset, onClose }) => {
   const [data, setData] = useState([]);
@@ -38,7 +39,7 @@ const DataPreviewModal = ({ dataset, onClose }) => {
             const formData = new FormData();
             formData.append('filename', dataset.name + (dataset.name.endsWith('.csv') ? '' : '.csv'));
             
-            const response = await fetch('http://localhost:5000/api/analyze-data', {
+            const response = await fetch(`${API_BASE_URL}/api/analyze-data`, {
               method: 'POST',
               body: formData
             });

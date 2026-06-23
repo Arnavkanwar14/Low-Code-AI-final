@@ -15,6 +15,7 @@ import Sidebar from './components/Sidebar'
 import TrainingProgress from './components/TrainingProgress'
 import Workspace from './components/Workspace'
 import DataPreviewModal from './components/DataPreviewModal'
+import { API_BASE_URL } from './config'
 const STEPS = [
   { id: 1, label: 'Load Data',       icon: Database, desc: 'Upload a dataset to work with' },
   { id: 2, label: 'Configure',        icon: Settings, desc: 'Choose model & clean data' },
@@ -82,7 +83,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState(1)
   const [completedSteps, setCompletedSteps] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/api/projects')
+    fetch(`${API_BASE_URL}/api/projects`)
       .then(res => res.json())
       .then(data => {
         setProjects(data)
@@ -96,7 +97,7 @@ function App() {
     const fd = new FormData()
     if (item.file) fd.append('file', item.file)
     else fd.append('filename', item.name + '.csv')
-    fetch('http://localhost:5000/api/analyze-data', { method: 'POST', body: fd })
+    fetch(`${API_BASE_URL}/api/analyze-data`, { method: 'POST', body: fd })
       .then(r => r.json())
       .then(d => { if (d.success) setAvailableColumns(Object.keys(d.stats.column_info)) })
       .catch(() => {})
@@ -124,7 +125,7 @@ function App() {
     }
   }
   const createProject = (name) => {
-    fetch('http://localhost:5000/api/projects', {
+    fetch(`${API_BASE_URL}/api/projects`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),
     }).then(r => r.json()).then(p => {
@@ -132,7 +133,7 @@ function App() {
     })
   }
   const deleteProject = (id) => {
-    fetch(`http://localhost:5000/api/projects/${id}`, { method: 'DELETE' }).then(() => {
+    fetch(`${API_BASE_URL}/api/projects/${id}`, { method: 'DELETE' }).then(() => {
       setProjects(prev => {
         const updated = prev.filter(p => p.id !== id)
         if (currentProjectId === id && updated.length > 0) setCurrentProjectId(updated[0].id)

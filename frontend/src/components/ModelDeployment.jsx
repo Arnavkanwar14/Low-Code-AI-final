@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../config'
+
 import {
   Server,
   Play,
@@ -16,7 +18,6 @@ import {
 } from 'lucide-react'
 
 const ModelDeployment = ({ modelResults }) => {
-  const API_BASE_URL = (import.meta?.env?.VITE_API_BASE_URL || 'http://localhost:5000').replace(/\/$/, '')
   const [models, setModels] = useState([])
   const [loading, setLoading] = useState(false)
   const [selectedModel, setSelectedModel] = useState(null)

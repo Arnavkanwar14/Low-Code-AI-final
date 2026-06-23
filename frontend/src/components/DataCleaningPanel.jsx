@@ -12,6 +12,7 @@ import {
   Activity,
   Maximize2
 } from 'lucide-react'
+import { API_BASE_URL } from '../config'
 
 const DataCleaningPanel = ({ datasets, setDatasets, onDataCleaned }) => {
   const [selectedDataset, setSelectedDataset] = useState(null)
@@ -43,7 +44,7 @@ const DataCleaningPanel = ({ datasets, setDatasets, onDataCleaned }) => {
       formData.append('file', selectedDataset.file)
       formData.append('options', JSON.stringify(options))
       
-      const response = await fetch('http://localhost:5000/api/clean-data', {
+      const response = await fetch(`${API_BASE_URL}/api/clean-data`, {
         method: 'POST',
         body: formData
       })
